@@ -11,9 +11,21 @@ public abstract class Character3D : MonoBehaviour
     [SerializeField]
     protected float rotationSpeed;
 
+    PhotonTransformView m_TransformView;
+    PhotonView m_PhotonView;
+
+    private void Start()
+    {
+        m_PhotonView = GetComponent<PhotonView>();
+        m_TransformView = GetComponent<PhotonTransformView>();
+    }
+
     private void Update()
     {
-        Movement();
+        if (m_PhotonView.isMine)
+        {
+            Movement();
+        } 
     }
 
     protected virtual void Movement()
