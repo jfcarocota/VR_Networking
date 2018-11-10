@@ -14,6 +14,9 @@ public abstract class Character3D : MonoBehaviour
     PhotonTransformView m_TransformView;
     PhotonView m_PhotonView;
 
+    [SerializeField]
+    Camera cam;
+
     private void Start()
     {
         m_PhotonView = GetComponent<PhotonView>();
@@ -25,6 +28,7 @@ public abstract class Character3D : MonoBehaviour
         if (m_PhotonView.isMine)
         {
             Movement();
+            cam.enabled = true;
         } 
     }
 
