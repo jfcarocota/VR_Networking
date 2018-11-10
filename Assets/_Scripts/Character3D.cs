@@ -15,7 +15,7 @@ public abstract class Character3D : MonoBehaviour
     PhotonView m_PhotonView;
 
     [SerializeField]
-    Camera cam;
+    Transform head;
 
     private void Start()
     {
@@ -28,7 +28,8 @@ public abstract class Character3D : MonoBehaviour
         if (m_PhotonView.isMine)
         {
             Movement();
-            cam.enabled = true;
+            Camera.main.transform.SetPositionAndRotation(head.position, head.rotation);
+            //cam.enabled = true;
         } 
     }
 
