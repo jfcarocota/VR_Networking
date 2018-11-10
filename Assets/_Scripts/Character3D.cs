@@ -21,6 +21,11 @@ public abstract class Character3D : MonoBehaviour
     {
         m_PhotonView = GetComponent<PhotonView>();
         m_TransformView = GetComponent<PhotonTransformView>();
+        if (m_PhotonView.isMine)
+        {
+            Camera.main.transform.parent = head.transform;
+            Camera.main.transform.localPosition = head.localPosition;
+        }
     }
 
     private void Update()
@@ -28,7 +33,8 @@ public abstract class Character3D : MonoBehaviour
         if (m_PhotonView.isMine)
         {
             Movement();
-            Camera.main.transform.SetPositionAndRotation(head.position, head.rotation);
+
+            //Camera.main.transform.SetPositionAndRotation(head.position, head.rotation);
             //cam.enabled = true;
         } 
     }
